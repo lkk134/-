@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قمة الرواسي | Qimmat Al-Rawasi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.png">
+</head>
+<body>
+  <button class="lang-switch">EN</button>
+  <a href="login.html" style="position:absolute;top:1rem;right:1rem;background:#ffb300;color:#222;padding:0.5rem 1.2rem;border-radius:1rem;text-decoration:none;font-weight:bold;">تسجيل الدخول</a>
+  <div class="header">قمة الرواسي</div>
+  <div class="welcome">مرحبًا بك في قمة الرواسي! أفضل خدمة توصيل وتقييم للمطاعم. استمتع بتجربة فريدة واطلب الآن! 🚀</div>
+  <section class="menu-sections">
+    <!-- قسم السندوتشات -->
+    <div class="menu-section">
+      <h2>🥙 السندوتشات</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/falafel.png" alt="فلافل صغير"><div>فلافل صغير<br><span>12 ريال - 355 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/falafel.png" alt="فلافل"><div>فلافل<br><span>12 ريال - 355 سعرة</span></div><button class="order-btn" onclick="orderItem('فلافل',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/egg.png" alt="بيض"><div>بيض<br><span>12 ريال - 386 سعرة</span></div><button class="order-btn" onclick="orderItem('بيض',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/egg-veg.png" alt="بيض بالخضار"><div>بيض بالخضار<br><span>12 ريال - 385 سعرة</span></div><button class="order-btn" onclick="orderItem('بيض بالخضار',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/cheese.png" alt="جبن"><div>جبن<br><span>12 ريال - 361 سعرة</span></div><button class="order-btn" onclick="orderItem('جبن',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/cheese-mix.png" alt="جبن مشكل"><div>جبن مشكل<br><span>12 ريال - 367 سعرة</span></div><button class="order-btn" onclick="orderItem('جبن مشكل',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shakshuka.png" alt="شكشوكة"><div>شكشوكة<br><span>12 ريال - 366 سعرة</span></div><button class="order-btn" onclick="orderItem('شكشوكة',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/beans.png" alt="فول"><div>فول<br><span>12 ريال - 369 سعرة</span></div><button class="order-btn" onclick="orderItem('فول',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/lentil.png" alt="عدس"><div>عدس<br><span>12 ريال - 370 سعرة</span></div><button class="order-btn" onclick="orderItem('عدس',12)">اطلب</button></div>
+        <div class="menu-item"><img src="images/falafel-mix.png" alt="فلافل مشكل"><div>فلافل مشكل<br><span>12 ريال - 380 سعرة</span></div><button class="order-btn" onclick="orderItem('فلافل مشكل',12)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم الشاورما -->
+    <div class="menu-section">
+      <h2>🌯 الشاورما</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/shawarma-plate.png" alt="شاورما عربي صحن"><div>شاورما عربي صحن<br><span>35 ريال - 396 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/shawarma-plate-small.png" alt="شاورما عربي صحن صغير"><div>شاورما عربي صحن صغير<br><span>25 ريال - 382 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما عربي صحن صغير',25)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shawarma-chicken.png" alt="شاورما عربي دجاج"><div>شاورما عربي دجاج<br><span>18 ريال - 384 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما عربي دجاج',18)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shawarma-beef.png" alt="شاورما عربي لحم"><div>شاورما عربي لحم<br><span>25 ريال - 390 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما عربي لحم',25)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shawarma-saj-chicken.png" alt="شاورما صاج دجاج"><div>شاورما صاج دجاج<br><span>13 ريال - 391 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما صاج دجاج',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shawarma-saj-beef.png" alt="شاورما صاج لحم"><div>شاورما صاج لحم<br><span>15 ريال - 392 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما صاج لحم',15)">اطلب</button></div>
+        <div class="menu-item"><img src="images/shawarma-saj-small.png" alt="شاورما صاج صغير"><div>شاورما صاج صغير<br><span>9 ريال - 395 سعرة</span></div><button class="order-btn" onclick="orderItem('شاورما صاج صغير',9)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم البروستد -->
+    <div class="menu-section">
+      <h2>🍗 البروستد</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/broast-4.png" alt="بروستد 4 قطع"><div>بروستد 4 قطع<br><span>18 ريال - 351 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/broast-strip.png" alt="بروستد سحب"><div>بروستد سحب<br><span>18 ريال - 352 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد سحب',18)">اطلب</button></div>
+        <div class="menu-item"><img src="images/broast-hot.png" alt="بروستد حراق"><div>بروستد حراق<br><span>18 ريال - 353 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد حراق',18)">اطلب</button></div>
+        <div class="menu-item"><img src="images/broast-hot2.png" alt="بروستد حراق"><div>بروستد حراق<br><span>18 ريال - 354 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد حراق',18)">اطلب</button></div>
+        <div class="menu-item"><img src="images/broast-6.png" alt="بروستد 6 قطع"><div>بروستد 6 قطع<br><span>22 ريال - 355 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد 6 قطع',22)">اطلب</button></div>
+        <div class="menu-item"><img src="images/broast-9.png" alt="بروستد 9 قطع"><div>بروستد 9 قطع<br><span>30 ريال - 356 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد 9 قطع',30)">اطلب</button></div>
+        <div class="menu-item"><img src="images/broast-12.png" alt="بروستد 12 قطعة"><div>بروستد 12 قطعة<br><span>40 ريال - 357 سعرة</span></div><button class="order-btn" onclick="orderItem('بروستد 12 قطعة',40)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم سندوتشات البروستد -->
+    <div class="menu-section">
+      <h2>🍔 سندوتشات البروستد</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/strip-sandwich.png" alt="سندوتش سحب"><div>سندوتش سحب<br><span>13 ريال - 355 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/znjr-beef.png" alt="زنجر لحم"><div>زنجر لحم<br><span>13 ريال - 386 سعرة</span></div><button class="order-btn" onclick="orderItem('زنجر لحم',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/znjr-cheese.png" alt="زنجر وجبنة"><div>زنجر وجبنة<br><span>13 ريال - 385 سعرة</span></div><button class="order-btn" onclick="orderItem('زنجر وجبنة',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/fillet-cheese.png" alt="فيلة وجبنة"><div>فيلة وجبنة<br><span>13 ريال - 392 سعرة</span></div><button class="order-btn" onclick="orderItem('فيلة وجبنة',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/beef-fillet-cheese.png" alt="لحم فيلة وجبنة"><div>لحم فيلة وجبنة<br><span>13 ريال - 397 سعرة</span></div><button class="order-btn" onclick="orderItem('لحم فيلة وجبنة',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/znjr-beef-cheese.png" alt="زنجر وجبنة لحم"><div>زنجر وجبنة لحم<br><span>13 ريال - 355 سعرة</span></div><button class="order-btn" onclick="orderItem('زنجر وجبنة لحم',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/znjr-cheese2.png" alt="زنجر وجبنة"><div>زنجر وجبنة<br><span>13 ريال - 391 سعرة</span></div><button class="order-btn" onclick="orderItem('زنجر وجبنة',13)">اطلب</button></div>
+        <div class="menu-item"><img src="images/fillet-cheese2.png" alt="فيلة وجبنة"><div>فيلة وجبنة<br><span>13 ريال - 395 سعرة</span></div><button class="order-btn" onclick="orderItem('فيلة وجبنة',13)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم الصوصات والمشروبات -->
+    <div class="menu-section">
+      <h2>🥤 الصوصات والمشروبات</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/garlic.png" alt="ثوم"><div>ثوم<br><span>2 ريال - 35 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/fries.png" alt="بطاطس"><div>بطاطس<br><span>5 ريال - 120 سعرة</span></div><button class="order-btn" onclick="orderItem('بطاطس',5)">اطلب</button></div>
+        <div class="menu-item"><img src="images/cheese-fries.png" alt="بطاطس جبنة"><div>بطاطس جبنة<br><span>7 ريال - 130 سعرة</span></div><button class="order-btn" onclick="orderItem('بطاطس جبنة',7)">اطلب</button></div>
+        <div class="menu-item"><img src="images/fries-mix.png" alt="بطاطس خصوصيات"><div>بطاطس خصوصيات<br><span>9 ريال - 130 سعرة</span></div><button class="order-btn" onclick="orderItem('بطاطس خصوصيات',9)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pepsi.png" alt="بيبسي"><div>بيبسي<br><span>2 ريال - 130 سعرة</span></div><button class="order-btn" onclick="orderItem('بيبسي',2)">اطلب</button></div>
+        <div class="menu-item"><img src="images/water.png" alt="ماء"><div>ماء<br><span>1 ريال - 0 سعرة</span></div><button class="order-btn" onclick="orderItem('ماء',1)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم البيتزا -->
+    <div class="menu-section">
+      <h2>🍕 البيتزا</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/pizza-veg.png" alt="بيتزا خضار"><div>خضار<br><span>12-15-23 ريال - 385 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/pizza-chicken.png" alt="بيتزا دجاج"><div>دجاج<br><span>12-17-25 ريال - 395 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا دجاج',17)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pizza-bbq.png" alt="بيتزا دجاج باربيكيو"><div>دجاج باربيكيو<br><span>15-20-30 ريال - 467 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا دجاج باربيكيو',20)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pizza-beef.png" alt="بيتزا لحم"><div>لحم<br><span>15-20-30 ريال - 397 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا لحم',20)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pizza-tuna.png" alt="بيتزا تونة"><div>التونة<br><span>12-17-25 ريال - 392 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا تونة',17)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pizza-margherita.png" alt="بيتزا مارجريتا"><div>مارجريتا<br><span>12-15-23 ريال - 385 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا مارجريتا',15)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم الحرارة -->
+    <div class="menu-section">
+      <h2>🍢 الحرارة</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/grill-full.png" alt="نسخة نفر"><div>نسخة نفر<br><span>60 ريال - 400 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/grill-half.png" alt="نص"><div>نص<br><span>30 ريال - 300 سعرة</span></div><button class="order-btn" onclick="orderItem('نص حرارة',30)">اطلب</button></div>
+        <div class="menu-item"><img src="images/kebab-beef.png" alt="كباب لحم"><div>كباب لحم<br><span>34 ريال - 345 سعرة</span></div><button class="order-btn" onclick="orderItem('كباب لحم',34)">اطلب</button></div>
+        <div class="menu-item"><img src="images/kebab-chicken.png" alt="كباب دجاج"><div>كباب دجاج<br><span>34 ريال - 345 سعرة</span></div><button class="order-btn" onclick="orderItem('كباب دجاج',34)">اطلب</button></div>
+        <div class="menu-item"><img src="images/owsal-beef.png" alt="أوصال لحم"><div>أوصال لحم<br><span>36 ريال - 360 سعرة</span></div><button class="order-btn" onclick="orderItem('أوصال لحم',36)">اطلب</button></div>
+        <div class="menu-item"><img src="images/owsal-chicken.png" alt="أوصال دجاج"><div>أوصال دجاج<br><span>33 ريال - 321 سعرة</span></div><button class="order-btn" onclick="orderItem('أوصال دجاج',33)">اطلب</button></div>
+        <div class="menu-item"><img src="images/tawook.png" alt="طاووق"><div>طاووق<br><span>33 ريال - 311 سعرة</span></div><button class="order-btn" onclick="orderItem('طاووق',33)">اطلب</button></div>
+      </div>
+    </div>
+    <!-- قسم المقبلات -->
+    <div class="menu-section">
+      <h2>🥗 المقبلات</h2>
+      <div class="menu-items">
+        <div class="menu-item"><img src="images/hummus.png" alt="حمص"><div>حمص<br><span>6 ريال - 92 سعرة</span></div></div>
+        <div class="menu-item"><img src="images/baba.png" alt="بابا غنوج"><div>بابا غنوج<br><span>6 ريال - 126 سعرة</span></div><button class="order-btn" onclick="orderItem('بابا غنوج',6)">اطلب</button></div>
+        <div class="menu-item"><img src="images/mutabbal.png" alt="متبل"><div>متبل<br><span>6 ريال - 126 سعرة</span></div><button class="order-btn" onclick="orderItem('متبل',6)">اطلب</button></div>
+        <div class="menu-item"><img src="images/grape-leaves.png" alt="ورق عنب"><div>ورق عنب<br><span>6 ريال - 186 سعرة</span></div><button class="order-btn" onclick="orderItem('ورق عنب',6)">اطلب</button></div>
+        <div class="menu-item"><img src="images/tabbouleh.png" alt="التبولة"><div>التبولة<br><span>8 ريال - 96 سعرة</span></div><button class="order-btn" onclick="orderItem('التبولة',8)">اطلب</button></div>
+        <div class="menu-item"><img src="images/fattoush.png" alt="فتوش"><div>فتوش<br><span>8 ريال - 213 سعرة</span></div><button class="order-btn" onclick="orderItem('فتوش',8)">اطلب</button></div>
+        <div class="menu-item"><img src="images/mixed-appetizer.png" alt="نسخة مشكل مقبلات"><div>نسخة مشكل مقبلات<br><span>20/15/22 ريال - 167 سعرة</span></div><button class="order-btn" onclick="orderItem('نسخة مشكل مقبلات',20)">اطلب</button></div>
+        <div class="menu-item"><img src="images/kiri.png" alt="جبن كيري"><div>جبن كيري<br><span>6 ريال - 500 سعرة</span></div><button class="order-btn" onclick="orderItem('جبن كيري',6)">اطلب</button></div>
+        <div class="menu-item"><img src="images/labneh-zaatar.png" alt="لبنة زعتر"><div>لبنة زعتر<br><span>6 ريال - 487 سعرة</span></div><button class="order-btn" onclick="orderItem('لبنة زعتر',6)">اطلب</button></div>
+        <div class="menu-item"><img src="images/labneh-zaatar-honey.png" alt="لبنة زعتر بالعسل"><div>لبنة زعتر بالعسل<br><span>8 ريال - 500 سعرة</span></div><button class="order-btn" onclick="orderItem('لبنة زعتر بالعسل',8)">اطلب</button></div>
+        <div class="menu-item"><img src="images/falafel-cheese.png" alt="فلافل مع جبن"><div>فلافل مع جبن<br><span>7 ريال - 502 سعرة</span></div><button class="order-btn" onclick="orderItem('فلافل مع جبن',7)">اطلب</button></div>
+        <div class="menu-item"><img src="images/mini-pie.png" alt="ميني فطائر"><div>ميني فطائر<br><span>8 ريال - 500 سعرة</span></div><button class="order-btn" onclick="orderItem('ميني فطائر',8)">اطلب</button></div>
+        <div class="menu-item"><img src="images/pizza-small.png" alt="بيتزا صغيرة"><div>بيتزا صغيرة<br><span>10 ريال - 392 سعرة</span></div><button class="order-btn" onclick="orderItem('بيتزا صغيرة',10)">اطلب</button></div>
+      </div>
+    </div>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>

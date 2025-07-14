@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الزبون | قمة الرواسي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">لوحة الزبون</div>
+  <div class="welcome">مرحبًا بك في لوحة الزبون. هنا يمكنك متابعة طلباتك، معرفة مدة الطلب، المجموع، وتقييم المطعم والموصل.</div>
+  <section class="customer-section">
+    <h2>طلباتي</h2>
+    <div id="customer-orders"></div>
+    <h2>تقييم المطعم</h2>
+    <div><input type="number" id="rate-restaurant" min="1" max="5" placeholder="من 1 إلى 5"> <button onclick="rate('restaurant')">تقييم</button></div>
+    <h2>تقييم الموصل</h2>
+    <div><input type="number" id="rate-driver" min="1" max="5" placeholder="من 1 إلى 5"> <button onclick="rate('driver')">تقييم</button></div>
+  </section>
+  <script src="customer.js"></script>
+</body>
+</html>

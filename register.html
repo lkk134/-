@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل حساب جديد | قمة الرواسي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">تسجيل حساب جديد</div>
+  <form class="register-form" autocomplete="off">
+    <label for="username">اسم المستخدم</label>
+    <input type="text" id="username" required>
+    <label for="password">كلمة المرور</label>
+    <input type="password" id="password" required>
+    <button type="submit">تسجيل</button>
+    <div class="register-error" style="color:var(--danger);margin-top:1rem;display:none"></div>
+  </form>
+  <div class="register-link">لديك حساب؟ <a href="login.html">سجّل الدخول</a></div>
+  <script src="register.js"></script>
+</body>
+</html>

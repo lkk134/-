@@ -1,0 +1,757 @@
+!DOCTYPE html>
+<html lang="a<r" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قمة الرواسي | Qimma Delivery</title>
+  <style>
+    :root {
+      --main: #ff0055;
+      --main-dark: #2d0036;
+      --accent: rgba(171, 68, 57, 1);
+      --bg: #0a001a;
+      --white: #fff;
+      --black: #000;
+      --owner-bg: #111;
+      --danger: #ff2222;
+      --success:#e6230068;
+    }
+    body {
+      font-family: 'Tajawal', 'Arial', sans-serif;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--main-dark) 100%);
+      color: var(--white);
+      margin: 0;
+      min-height: 100vh;
+      transition: background 1s;
+    }
+    .welcome {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 1s;
+    }
+    .welcome-content {
+      background: linear-gradient(135deg, var(--main), var(--accent));
+      color: var(--black);
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 60px var(--main);
+      text-align: center;
+      animation: popIn 1.2s;
+    }
+    .welcome-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      animation: colorPulse 2s infinite alternate;
+    }
+    .welcome-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .welcome-content button {
+      background: var(--main-dark);
+      color: var(--accent);
+      border: none;
+      padding: 15px 35px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .welcome-content button:hover {
+      background: var(--main);
+      color: var(--white);
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes colorPulse {
+      from { color: var(--main-dark);}
+      to { color: var(--danger);}
+    }
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background: var(--main);
+      color: var(--white);
+      border: none;
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .lang-switch:hover { background: var(--accent); color: var(--main-dark);}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 10px 60px 10px;
+    }
+    .logo {
+      font-size: 2.7rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--accent), var(--main), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 30px var(--main);
+      animation: colorPulse 2s infinite alternate;
+    }
+    .login-box {
+      background: rgba(0,0,0,0.7);
+      border-radius: 18px;
+      max-width: 350px;
+      margin: 30px auto;
+      padding: 30px 25px;
+      box-shadow: 0 0 30px var(--main-dark);
+      text-align: center;
+      animation: fadeIn 1s;
+    }
+    .login-box input, .login-box select {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid var(--main);
+      font-size: 1rem;
+      background: #222;
+      color: var(--white);
+      transition: border 0.3s;
+    }
+    .login-box input:focus { border: 2px solid var(--accent);}
+    .login-box button {
+      background: var(--main);
+      color: var(--white);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .login-box button:hover { background: var(--accent); color: var(--main-dark);}
+    .main-content { display: none; }
+    .section {
+      background: rgba(255,255,255,0.07);
+      border-radius: 18px;
+      margin-bottom: 30px;
+      padding: 25px 18px;
+      box-shadow: 0 0 20px var(--main-dark);
+      animation: fadeIn 1s;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-bottom: 18px;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--main);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 18px;
+    }
+    .menu-item {
+      background: linear-gradient(135deg, var(--main-dark), var(--main));
+      border-radius: 14px;
+      padding: 18px 10px;
+      color: var(--white);
+      box-shadow: 0 0 10px var(--main-dark);
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu-item:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 30px var(--accent);
+    }
+    .menu-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 3px solid var(--accent);
+      background: #fff;
+    }
+    .item-name { font-weight: bold; font-size: 1.1rem; margin-bottom: 6px;}
+    .item-price { color: var(--accent); font-weight: bold; font-size: 1.2rem;}
+    .item-cal { color: #eee; font-size: 0.95rem; margin-bottom: 8px;}
+    .add-cart-btn {
+      background: var(--accent);
+      color: var(--main-dark);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.3s;
+    }
+    .add-cart-btn:hover { background: var(--main); color: var(--white);}
+    .cart {
+      background: rgba(0,0,0,0.8);
+      color: var(--accent);
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px var(--main-dark);
+      max-width: 400px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .cart-title { font-weight: bold; font-size: 1.2rem; margin-bottom: 10px;}
+    .cart-item { color: var(--white); margin-bottom: 8px;}
+    .cart-total { color: var(--success); font-weight: bold; font-size: 1.1rem;}
+    .order-btn {
+      background: var(--main);
+      color: var(--white);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+    .order-btn:hover { background: var(--accent); color: var(--main-dark);}
+    .order-status, .order-details, .owner-panel, .employee-panel {
+      margin-bottom: 25px;
+      padding: 18px;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.85);
+      box-shadow: 0 0 20px var(--main-dark);
+    }
+    .owner-panel {
+      background: var(--owner-bg);
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .danger-box {
+      background: var(--danger);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 0 10px var(--danger);
+    }
+    .rating-stars {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin: 10px 0;
+    }
+    .star {
+      font-size: 1.7rem;
+      color: #fff3;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .star.selected, .star:hover { color: var(--accent); transform: scale(1.2);}
+    .switch-user {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--main-dark);
+      color: var(--accent);
+      border: none;
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 100;
+      transition: background 0.3s;
+    }
+    .switch-user:hover { background: var(--main);}
+    @media (max-width: 700px) {
+      .container { padding: 10px 2px 60px 2px;}
+      .menu-grid { grid-template-columns: 1fr;}
+      .cart { max-width: 98vw;}
+    }
+  </style>
+</head>
+<body>
+  <button class="lang-switch" onclick="toggleLang()"></button>
+  <div class="welcome" id="welcome">
+    <div class="welcome-content">
+      <h2 id="welcome-title">مرحبًا بك في قمة الرواسي!</h2>
+      <p id="welcome-msg">أفضل تجربة توصيل وتقييم للمطاعم. استمتع معنا!</p>
+      <button onclick="closeWelcome()">ابدأ الآن</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="logo" id="site-title">قمة الرواسي</div>
+    <div class="login-box" id="login-box">
+      <div id="login-title">تسجيل الدخول</div>
+      <select id="user-type">
+        <option value="customer">زبون</option>
+        <option value="employee">موظف</option>
+        <option value="owner">مالك</option>
+      </select>
+      <input type="text" id="username" placeholder="اسم المستخدم">
+      <input type="password" id="password" placeholder="كلمة المرور">
+      <button onclick="login()">دخول</button>
+      <div style="margin-top:10px;">
+        <span id="register-link" style="color:var(--accent);cursor:pointer;" onclick="showRegister()">إنشاء حساب جديد</span>
+      </div>
+    </div>
+    <div class="login-box" id="register-box" style="display:none;">
+      <div id="register-title">تسجيل حساب جديد</div>
+      <input type="text" id="reg-username" placeholder="اسم المستخدم">
+      <input type="password" id="reg-password" placeholder="كلمة المرور">
+      <button onclick="register()">تسجيل</button>
+      <div style="margin-top:10px;">
+        <span style="color:var(--accent);cursor:pointer;" onclick="showLogin()">عودة لتسجيل الدخول</span>
+      </div>
+    </div>
+    <div class="main-content" id="main-content">
+      <!-- Owner Panel -->
+      <div class="owner-panel section" id="owner-panel" style="display:none;">
+        <div class="section-title" id="owner-title">لوحة المالك</div>
+        <div id="owner-income">إجمالي الدخل هذا الشهر: <span id="income-value">0</span> ريال</div>
+        <div id="owner-orders-title" style="margin-top:15px;">تفاصيل الطلبات:</div>
+        <div id="owner-orders"></div>
+        <button class="order-btn" onclick="addResume()" id="resume-btn">إضافة استئناف</button>
+        <div class="danger-box" id="owner-dangers" style="margin-top:15px;">الأضرار: لا يوجد</div>
+      </div>
+      <!-- Employee Panel -->
+      <div class="employee-panel section" id="employee-panel" style="display:none;">
+        <div class="section-title" id="employee-title">لوحة الموظف</div>
+        <div id="employee-orders"></div>
+      </div>
+      <!-- Customer Panel -->
+      <div class="section" id="customer-panel" style="display:none;">
+        <div class="section-title" id="customer-title">مرحبا بك!</div>
+        <div id="order-status"></div>
+        <div id="order-details"></div>
+        <div id="customer-rating"></div>
+      </div>
+      <!-- Menu & Cart -->
+      <div class="section" id="menu-section">
+        <div class="section-title" id="menu-title">القائمة</div>
+        <div id="menu-categories"></div>
+      </div>
+      <div class="cart" id="cart">
+        <div class="cart-title" id="cart-title">سلة الطلبات</div>
+        <div id="cart-items"></div>
+        <div class="cart-total" id="cart-total"></div>
+        <button class="order-btn" onclick="placeOrder()" id="order-btn">إرسال الطلب</button>
+      </div>
+    </div>
+    <button class="switch-user" onclick="logout()" style="display:none;" id="logout-btn">تبديل المستخدم</button>
+  </div>
+  <script>
+    // بيانات المنيو (صور رمزية)
+    const menuData = [
+      {
+        name_ar: "🥙 السندوتشات", name_en: "🥙 Sandwiches", items: [
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"فلافل صغير", name_en:"Small Falafel", price:12, cal:355},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"فلافل", name_en:"Falafel", price:12, cal:355},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بيض", name_en:"Egg", price:12, cal:386},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بيض بالخضار", name_en:"Egg w/ Veggies", price:12, cal:385},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"جبن", name_en:"Cheese", price:12, cal:361},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"جبن مشكل", name_en:"Mixed Cheese", price:12, cal:367},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"شكشوكة", name_en:"Shakshouka", price:12, cal:366},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"فول", name_en:"Foul", price:12, cal:369},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"عدس", name_en:"Lentil", price:12, cal:370},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"فلافل مشكل", name_en:"Mixed Falafel", price:12, cal:380},
+        ]
+      },
+      {
+        name_ar: "🌯 الشاورما", name_en: "🌯 Shawarma", items: [
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما عربي صحن", name_en:"Shawarma Plate", price:35, cal:396},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما عربي صحن صغير", name_en:"Small Shawarma Plate", price:25, cal:382},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما عربي دجاج", name_en:"Chicken Shawarma", price:18, cal:384},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما عربي لحم", name_en:"Meat Shawarma", price:25, cal:390},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما صاج دجاج", name_en:"Chicken Saj Shawarma", price:13, cal:391},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما صاج لحم", name_en:"Meat Saj Shawarma", price:15, cal:392},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"شاورما صاج صغير", name_en:"Small Saj Shawarma", price:9, cal:395},
+        ]
+      },
+      {
+        name_ar: "🍗 بروستد", name_en: "🍗 Broasted", items: [
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد 4 قطع", name_en:"Broasted 4pcs", price:18, cal:351},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد سحب", name_en:"Broasted Pull", price:18, cal:352},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد حراق", name_en:"Spicy Broasted", price:18, cal:353},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد 6 قطع", name_en:"Broasted 6pcs", price:22, cal:355},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد 9 قطع", name_en:"Broasted 9pcs", price:30, cal:356},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بروستد 12 قطعة", name_en:"Broasted 12pcs", price:40, cal:357},
+        ]
+      },
+      {
+        name_ar: "🍔 سندوتشات البروستد", name_en: "🍔 Broasted Sandwiches", items: [
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"سندوتش سحب", name_en:"Pull Sandwich", price:13, cal:355},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"زنجر لحم", name_en:"Meat Zinger", price:13, cal:386},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"زنجر وجبنة", name_en:"Zinger & Cheese", price:13, cal:385},
+          {img:"https://cdn-icons-png.flaticon.com/512/1046/1046784.png", name_ar:"فيلة وجبنة", name_en:"Filet & Cheese", price:13, cal:392},
+        ]
+      },
+      {
+        name_ar: "🥤 الخصوصات", name_en: "🥤 Extras", items: [
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"ثوم", name_en:"Garlic", price:2, cal:35},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بطاطس", name_en:"Fries", price:5, cal:120},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بطاطس جبنة", name_en:"Cheese Fries", price:7, cal:130},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"بيبسي", name_en:"Pepsi", price:2, cal:130},
+          {img:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", name_ar:"ماء", name_en:"Water", price:1, cal:0},
+        ]
+      }
+      // يمكنك إضافة باقي الأقسام بنفس الطريقة
+    ];
+    // دعم اللغتين
+    let lang = 'ar';
+    const texts = {
+      ar: {
+        site: "قمة الرواسي",
+        welcome: "مرحبًا بك في قمة الرواسي!",
+        welcomeMsg: "أفضل تجربة توصيل وتقييم للمطاعم. استمتع معنا!",
+        start: "ابدأ الآن",
+        login: "تسجيل الدخول",
+        register: "تسجيل حساب جديد",
+        username: "اسم المستخدم",
+        password: "كلمة المرور",
+        userType: ["زبون", "موظف", "مالك"],
+        loginBtn: "دخول",
+        registerBtn: "تسجيل",
+        newAccount: "إنشاء حساب جديد",
+        backLogin: "عودة لتسجيل الدخول",
+        ownerPanel: "لوحة المالك",
+        income: "إجمالي الدخل هذا الشهر:",
+        orders: "تفاصيل الطلبات:",
+        dangers: "الأضرار: لا يوجد",
+        resume: "إضافة استئناف",
+        employeePanel: "لوحة الموظف",
+        customerPanel: "مرحبا بك!",
+        orderStatus: "حالة الطلب:",
+        orderDetails: "تفاصيل الطلب:",
+        rating: "تقييم المطعم",
+        deliveryRating: "تقييم الموصل",
+        menu: "القائمة",
+        cart: "سلة الطلبات",
+        total: "المجموع:",
+        order: "إرسال الطلب",
+        logout: "تبديل المستخدم",
+        langSwitch: "English",
+        delivery: "سعر التوصيل: 5 ريال",
+        orderTime: "مدة الطلب:",
+        orderValue: "مجموع الطلب:",
+        customerPhone: "رقم الزبون:",
+        orderLocation: "موقع الطلب:",
+        addCart: "أضف للسلة",
+        rate: "قيم",
+        min: "دقيقة"
+      },
+      en: {
+        site: "Qimma Delivery",
+        welcome: "Welcome to Qimma Delivery!",
+        welcomeMsg: "The best food delivery and restaurant rating experience. Enjoy!",
+        start: "Start Now",
+        login: "Login",
+        register: "Register New Account",
+        username: "Username",
+        password: "Password",
+        userType: ["Customer", "Employee", "Owner"],
+        loginBtn: "Login",
+        registerBtn: "Register",
+        newAccount: "Create New Account",
+        backLogin: "Back to Login",
+        ownerPanel: "Owner Panel",
+        income: "Total income this month:",
+        orders: "Order Details:",
+        dangers: "Damages: None",
+        resume: "Add Resume",
+        employeePanel: "Employee Panel",
+        customerPanel: "Welcome!",
+        orderStatus: "Order Status:",
+        orderDetails: "Order Details:",
+        rating: "Restaurant Rating",
+        deliveryRating: "Delivery Rating",
+        menu: "Menu",
+        cart: "Cart",
+        total: "Total:",
+        order: "Place Order",
+        logout: "Switch User",
+        langSwitch: "العربية",
+        delivery: "Delivery Fee: 5 SAR",
+        orderTime: "Order Time:",
+        orderValue: "Order Value:",
+        customerPhone: "Customer Phone:",
+        orderLocation: "Order Location:",
+        addCart: "Add to Cart",
+        rate: "Rate",
+        min: "min"
+      }
+    };
+    // بيانات المستخدمين التجريبية
+    let users = [
+      {username:"aass", password:"123", type:"owner"},
+      {username:"lkk", password:"123", type:"employee"},
+      {username:"customer", password:"123", type:"customer"}
+    ];
+    let currentUser = null;
+    let cart = [];
+    let orders = [];
+    let income = 0;
+    // واجهة الترحيب
+    function closeWelcome() {
+      document.getElementById('welcome').style.display = 'none';
+    }
+    // تبديل اللغة
+    function toggleLang() {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      renderTexts();
+      renderMenu();
+      renderCart();
+      renderPanels();
+    }
+    function renderTexts() {
+      document.getElementById('site-title').textContent = texts[lang].site;
+      document.getElementById('welcome-title').textContent = texts[lang].welcome;
+      document.getElementById('welcome-msg').textContent = texts[lang].welcomeMsg;
+      document.querySelector('.welcome-content button').textContent = texts[lang].start;
+      document.getElementById('login-title').textContent = texts[lang].login;
+      document.getElementById('register-title').textContent = texts[lang].register;
+      document.getElementById('username').placeholder = texts[lang].username;
+      document.getElementById('password').placeholder = texts[lang].password;
+      document.getElementById('reg-username').placeholder = texts[lang].username;
+      document.getElementById('reg-password').placeholder = texts[lang].password;
+      document.getElementById('register-link').textContent = texts[lang].newAccount;
+      document.getElementById('owner-title').textContent = texts[lang].ownerPanel;
+      document.getElementById('employee-title').textContent = texts[lang].employeePanel;
+      document.getElementById('customer-title').textContent = texts[lang].customerPanel;
+      document.getElementById('menu-title').textContent = texts[lang].menu;
+      document.getElementById('cart-title').textContent = texts[lang].cart;
+      document.getElementById('order-btn').textContent = texts[lang].order;
+      document.getElementById('logout-btn').textContent = texts[lang].logout;
+      document.querySelector('.lang-switch').textContent = texts[lang].langSwitch;
+      document.getElementById('resume-btn').textContent = texts[lang].resume;
+      document.getElementById('owner-dangers').textContent = texts[lang].dangers;
+    }
+    // تسجيل الدخول
+    function login() {
+      let username = document.getElementById('username').value.trim();
+      let password = document.getElementById('password').value.trim();
+      let type = document.getElementById('user-type').value;
+      let user = users.find(u=>u.username===username && u.password===password && u.type===type);
+      if(user) {
+        currentUser = user;
+        document.getElementById('login-box').style.display = 'none';
+        document.getElementById('register-box').style.display = 'none';
+        document.getElementById('main-content').style.display = '';
+        document.getElementById('logout-btn').style.display = '';
+        renderPanels();
+      } else {
+        alert(lang==='ar'?'بيانات الدخول غير صحيحة':'Invalid login data');
+      }
+    }
+    // تسجيل جديد
+    function register() {
+      let username = document.getElementById('reg-username').value.trim();
+      let password = document.getElementById('reg-password').value.trim();
+      if(!username || !password) return alert(lang==='ar'?'يرجى تعبئة جميع الحقول':'Please fill all fields');
+      if(users.find(u=>u.username===username)) return alert(lang==='ar'?'اسم المستخدم مستخدم':'Username exists');
+      users.push({username,password,type:"customer"});
+      alert(lang==='ar'?'تم التسجيل بنجاح!':'Registered successfully!');
+      showLogin();
+    }
+    function showRegister() {
+      document.getElementById('login-box').style.display = 'none';
+      document.getElementById('register-box').style.display = '';
+    }
+    function showLogin() {
+      document.getElementById('login-box').style.display = '';
+      document.getElementById('register-box').style.display = 'none';
+    }
+    function logout() {
+      currentUser = null;
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('login-box').style.display = '';
+      document.getElementById('logout-btn').style.display = 'none';
+      cart = [];
+      renderCart();
+    }
+    // عرض لوحة المستخدم حسب النوع
+    function renderPanels() {
+      document.getElementById('owner-panel').style.display = currentUser && currentUser.type==='owner' ? '' : 'none';
+      document.getElementById('employee-panel').style.display = currentUser && currentUser.type==='employee' ? '' : 'none';
+      document.getElementById('customer-panel').style.display = currentUser && currentUser.type==='customer' ? '' : 'none';
+      if(currentUser && currentUser.type==='owner') renderOwnerPanel();
+      if(currentUser && currentUser.type==='employee') renderEmployeePanel();
+      if(currentUser && currentUser.type==='customer') renderCustomerPanel();
+    }
+    // قائمة الطعام
+    function renderMenu() {
+      let html = '';
+      menuData.forEach(cat=>{
+        html += `<div style="margin-bottom:20px;">
+          <div class="section-title">${lang==='ar'?cat.name_ar:cat.name_en}</div>
+          <div class="menu-grid">`;
+        cat.items.forEach(item=>{
+          html += `<div class="menu-item">
+            <img class="menu-img" src="${item.img}" alt="">
+            <div class="item-name">${lang==='ar'?item.name_ar:item.name_en}</div>
+            <div class="item-price">${item.price} ريال</div>
+            <div class="item-cal">${item.cal} ${lang==='ar'?'سعرة':'cal'}</div>
+            <button class="add-cart-btn" onclick="addToCart('${cat.name_ar}','${item.name_ar}',${item.price},${item.cal},'${item.img}')">${lang==='ar'?texts.ar.addCart:texts.en.addCart}</button>
+          </div>`;
+        });
+        html += `</div></div>`;
+      });
+      document.getElementById('menu-categories').innerHTML = html;
+    }
+    // السلة
+    function addToCart(cat, name, price, cal, img) {
+      cart.push({cat, name, price, cal, img});
+      renderCart();
+    }
+    function renderCart() {
+      let html = '';
+      let total = 0;
+      cart.forEach((item,i)=>{
+        html += `<div class="cart-item">${item.name} - ${item.price} ريال <span style="color:#f55;cursor:pointer;" onclick="removeCart(${i})">×</span></div>`;
+        total += item.price;
+      });
+      if(cart.length) html += `<div style="color:var(--accent);margin-top:10px;">${texts[lang].delivery}</div>`;
+      document.getElementById('cart-items').innerHTML = html;
+      document.getElementById('cart-total').textContent = texts[lang].total + " " + (total+(cart.length?5:0)) + " ريال";
+    }
+    function removeCart(i) {
+      cart.splice(i,1);
+      renderCart();
+    }
+    // إرسال الطلب
+    function placeOrder() {
+      if(!cart.length) return alert(lang==='ar'?'السلة فارغة':'Cart is empty');
+      let order = {
+        id: Date.now(),
+        items: [...cart],
+        total: cart.reduce((a,b)=>a+b.price,0)+5,
+        time: Math.floor(Math.random()*20)+10,
+        customer: currentUser ? currentUser.username : "زبون",
+        phone: "05"+Math.floor(Math.random()*100000000),
+        location: "https://goo.gl/maps/xyz"+Math.floor(Math.random()*1000),
+        status: lang==='ar'?'قيد التحضير':'Preparing',
+        restaurantRating: 0,
+        deliveryRating: 0
+      };
+      orders.push(order);
+      income += order.total;
+      cart = [];
+      renderCart();
+      renderPanels();
+      alert(lang==='ar'?'تم إرسال الطلب!':'Order sent!');
+    }
+    // لوحة المالك
+    function renderOwnerPanel() {
+      document.getElementById('income-value').textContent = income;
+      let html = '';
+      orders.forEach(order=>{
+        html += `<div style="background:#222;padding:10px;border-radius:8px;margin-bottom:8px;">
+          <div>${texts[lang].orderValue} <b>${order.total} ريال</b></div>
+          <div>${texts[lang].orderTime} <b>${order.time} ${texts[lang].min}</b></div>
+          <div>${texts[lang].customerPhone} <b>${order.phone}</b></div>
+          <div>${texts[lang].orderLocation} <a href="${order.location}" target="_blank" style="color:var(--accent)">خريطة</a></div>
+        </div>`;
+      });
+      document.getElementById('owner-orders').innerHTML = html || (lang==='ar'?'لا يوجد طلبات':'No orders');
+    }
+    // لوحة الموظف
+    function renderEmployeePanel() {
+      let html = '';
+      orders.forEach(order=>{
+        html += `<div style="background:#222;padding:10px;border-radius:8px;margin-bottom:8px;">
+          <div>${texts[lang].orderLocation} <a href="${order.location}" target="_blank" style="color:var(--accent)">خريطة</a></div>
+          <div>${texts[lang].customerPhone} <b>${order.phone}</b></div>
+          <div>${texts[lang].orderValue} <b>${order.total} ريال</b></div>
+        </div>`;
+      });
+      document.getElementById('employee-orders').innerHTML = html || (lang==='ar'?'لا يوجد طلبات':'No orders');
+    }
+    // لوحة الزبون
+    function renderCustomerPanel() {
+      let lastOrder = orders.filter(o=>o.customer===currentUser.username).slice(-1)[0];
+      let html = '';
+      if(lastOrder) {
+        html += `<div class="order-status">${texts[lang].orderStatus} <b>${lastOrder.status}</b></div>
+        <div class="order-details">
+          <div>${texts[lang].orderTime} <b>${lastOrder.time} ${texts[lang].min}</b></div>
+          <div>${texts[lang].orderValue} <b>${lastOrder.total} ريال</b></div>
+        </div>
+        <div class="rating-stars" id="rest-rating">${renderStars(lastOrder.restaurantRating, r=>rateOrder(lastOrder.id, 'restaurantRating', r))}</div>
+        <div style="text-align:center;margin-bottom:10px;">${texts[lang].rating}</div>
+        <div class="rating-stars" id="del-rating">${renderStars(lastOrder.deliveryRating, r=>rateOrder(lastOrder.id, 'deliveryRating', r))}</div>
+        <div style="text-align:center;">${texts[lang].deliveryRating}</div>
+        `;
+      } else {
+        html = lang==='ar'?'لا يوجد طلبات':'No orders';
+      }
+      document.getElementById('customer-panel').innerHTML = html;
+    }
+    function renderStars(val, cb) {
+      let html = '';
+      for(let i=1;i<=5;i++) {
+        html += `<span class="star${val>=i?' selected':''}" onclick="(${cb})(${i})">&#9733;</span>`;
+      }
+      return html;
+    }
+    function rateOrder(orderId, field, val) {
+      let order = orders.find(o=>o.id===orderId);
+      if(order) order[field] = val;
+      renderPanels();
+    }
+    // إضافة استئناف للمالك
+    function addResume() {
+      alert(lang==='ar'?'تمت إضافة الاستئناف!':'Resume added!');
+    }
+    // تهيئة
+    renderTexts();
+    renderMenu();
+    renderCart();
+    // تغيير أسماء أنواع المستخدمين حسب اللغة
+    document.getElementById('user-type').innerHTML = texts[lang].userType.map((t,i)=>`<option value="${['customer','employee','owner'][i]}">${t}</option>`).join('');
+  </script>
+</body>
+</html>
+# Code Citations
+
+## License: unknown
+https://github.com/henriquepe/katia_doces_api/tree/1efee00883e16abf3f667c199724e5a90046499c/src/server.js
+
+```
+express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const app = express();
+app.use(cors());
+app.use(express.json())
+```
+
+// حفظ الطلبات في localStorage
+function saveOrders() {
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+// تحميل الطلبات من localStorage عند بدء الموقع
+function loadOrders() {
+    const saved = localStorage.getItem('orders');
+    if (saved) orders = JSON.parse(saved);
+}
+loadOrders();

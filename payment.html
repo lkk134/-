@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الدفع | قمة الرواسي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">الدفع الإلكتروني</div>
+  <div class="welcome">يرجى إدخال بيانات البطاقة لإتمام عملية الدفع (محاكاة).</div>
+  <form class="payment-form" style="max-width:400px;margin:2rem auto;background:#232323;padding:2rem;border-radius:1.5rem;box-shadow:0 2px 16px #0002;">
+    <label for="card">رقم البطاقة</label>
+    <input type="text" id="card" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+    <label for="exp">تاريخ الانتهاء</label>
+    <input type="text" id="exp" maxlength="5" placeholder="MM/YY" required>
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" maxlength="4" placeholder="CVV" required>
+    <label for="name">اسم حامل البطاقة</label>
+    <input type="text" id="name" required>
+    <button type="submit">ادفع الآن</button>
+    <div class="payment-error" style="color:var(--danger);margin-top:1rem;display:none"></div>
+  </form>
+  <script src="payment.js"></script>
+</body>
+</html>

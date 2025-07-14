@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة المالك | قمة الرواسي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:#111;color:#fff;">
+  <div class="header">لوحة تحكم المالك</div>
+  <div class="welcome">مرحبًا بك في لوحة المالك. هنا يمكنك رؤية تفاصيل الطلبات، الدخل الشهري، الأضرار، واستئناف الطلبات.</div>
+  <section class="owner-section">
+    <h2>تفاصيل الطلبات</h2>
+    <div id="orders-list"></div>
+    <h2>إجمالي الدخل الشهري</h2>
+    <div id="income"></div>
+    <h2>الأضرار</h2>
+    <div id="damages">لا توجد أضرار مسجلة.</div>
+    <button onclick="resumeOrders()" style="background:#222;color:hsl(12, 87%, 27%);padding:0.7rem 2rem;border-radius:1rem;margin-top:1.5rem;">استئناف الطلبات</button>
+  </section>
+  <script src="owner.js"></script>
+</body>
+</html>

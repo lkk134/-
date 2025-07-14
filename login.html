@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول | قمة الرواسي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">تسجيل الدخول</div>
+  <form class="login-form" autocomplete="off">
+    <label for="username">اسم المستخدم</label>
+    <input type="text" id="username" required>
+    <label for="password">كلمة المرور</label>
+    <input type="password" id="password" required>
+    <label for="role">الدور</label>
+    <select id="role">
+      <option value="customer">زبون</option>
+      <option value="employee">موظف</option>
+      <option value="owner">مالك</option>
+    </select>
+    <button type="submit">دخول</button>
+    <div class="login-error" style="color:var(--danger);margin-top:1rem;display:none"></div>
+  </form>
+  <div class="register-link">ليس لديك حساب؟ <a href="register.html">سجل الآن</a></div>
+  <script src="login.js"></script>
+</body>
+</html>
